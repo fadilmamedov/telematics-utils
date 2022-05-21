@@ -8,6 +8,7 @@ export interface NavigationLog {
   gpsLng: number;
   gpsLat: number;
   gpsFormattedLocation: string;
+  speed: number;
   engineState: EngineState;
   engineStateDate: Date;
 }

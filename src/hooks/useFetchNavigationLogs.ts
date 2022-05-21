@@ -59,6 +59,7 @@ export const useFetchNavigationLogs = () => {
               gpsLng: data.gps.longitude,
               gpsLat: data.gps.latitude,
               gpsFormattedLocation: data.gps.reverseGeo.formattedLocation,
+              speed: data.gps.speedMilesPerHour,
             });
 
             const fetchingProgress = navigationLogs.length / totalNavigationLogsCount;

@@ -8,6 +8,7 @@ interface SamsaraVehicleStats {
     time: string;
     latitude: number;
     longitude: number;
+    speedMilesPerHour: number;
     reverseGeo: {
       formattedLocation: string;
     };

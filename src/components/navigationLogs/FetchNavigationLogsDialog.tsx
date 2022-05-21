@@ -49,11 +49,11 @@ export const FetchNavigationLogsDialog: React.FC<FetchNavigationLogsDialogProps>
   const handleFetchButtonClick = async () => {
     try {
       const navigationLogs = await fetchNavigationLogs({
-        startDate: moment.tz(date, timezone).toDate(),
+        startDate: moment("2022-04-20T10:45:00Z").toDate(),
         // TODO: Set end of day
-        endDate: moment.tz(date, timezone).add(1, "hour").toDate(),
-        deviceID,
-        fetchInterval,
+        endDate: moment("2022-04-20T10:50:00Z").toDate(),
+        deviceID: "281474980592958",
+        fetchInterval: 10,
       });
       setNavigationLogs(navigationLogs);
     } catch {}

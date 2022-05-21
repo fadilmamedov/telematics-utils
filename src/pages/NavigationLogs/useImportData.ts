@@ -13,6 +13,7 @@ interface NavigationLogJSON {
   gpsLng: number;
   gpsLat: number;
   gpsFormattedLocation: string;
+  speed: number;
   engineState: EngineState;
   engineStateDate: string;
 }
@@ -77,6 +78,7 @@ export const useImportData = () => {
           gpsLng,
           gpsLat,
           gpsFormattedLocation,
+          speed,
           engineState,
           engineStateDate,
         }) => ({
@@ -87,6 +89,7 @@ export const useImportData = () => {
           gpsLng: gpsLng,
           gpsLat: gpsLat,
           gpsFormattedLocation: gpsFormattedLocation,
+          speed,
           engineState,
           engineStateDate: new Date(engineStateDate),
         })
