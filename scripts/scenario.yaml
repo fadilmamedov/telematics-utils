@@ -10,4 +10,4 @@ steps:
   - engine: on
   - move:
       to: [-79.403739, 43.651655]
-      duration: 1 minute
+      duration: 10 seconds

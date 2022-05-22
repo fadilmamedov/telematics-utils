@@ -1,5 +1,7 @@
+const axios = require("axios");
 const moment = require("moment");
 const { sortBy } = require("lodash");
+const cliProgress = require("cli-progress");
 const { getAlongLocation } = require("./getAlongLocation");
 const { generateEngineStateStats } = require("./generateEngineVehicleStats");
 
@@ -44,9 +46,26 @@ const getSendDataTimePointsBetweenDates = (sendDataTimePoints, startDate, endDat
   });
 };
 
-const generateGpsStats = (commands, startLocation) => {
-  const result = [];
-  console.log(commands);
+const locationCache = {};
+const getFormattedLocation = async (location) => {
+  const [lng, lat] = location;
+
+  if (locationCache[JSON.stringify(location)]) {
+    return locationCache[JSON.stringify(location)];
+  }
+
+  const response = await axios.get(
+    `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&addressdetails=0`
+  );
+
+  const formattedLocation = response.data.display_name;
+  locationCache[JSON.stringify(location)] = formattedLocation;
+
+  return formattedLocation;
+};
+
+const generateGpsStats = async (commands, startLocation) => {
+  let gpsStats = [];
 
   let currentLocation = startLocation;
   const sendDataTimePoints = getSendDataTimePoints(commands);
@@ -64,20 +83,34 @@ const generateGpsStats = (commands, startLocation) => {
 
     if (name === "stay") {
       commandSendDataTimePoints.forEach((date) => {
-        result.push({ date, location: currentLocation, formattedLocation: "" });
+        gpsStats.push({ date, location: currentLocation, formattedLocation: "" });
       });
     }
 
     if (name === "move") {
       commandSendDataTimePoints.forEach((date) => {
         const location = getAlongLocation(currentLocation, to, startDate, endDate, date);
-        result.push({ date, location, formattedLocation: "" });
+        gpsStats.push({ date, location, formattedLocation: "" });
       });
       currentLocation = to;
     }
   });
 
-  return sortBy(result, ({ date }) => date);
+  gpsStats = sortBy(gpsStats, ({ date }) => date);
+
+  const progressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
+  progressBar.start(gpsStats.length, 0);
+
+  let index = 0;
+  for await (let gpsStatsEntry of gpsStats) {
+    index += 1;
+    gpsStatsEntry.formattedLocation = await getFormattedLocation(gpsStatsEntry.location);
+    progressBar.update(index);
+  }
+
+  progressBar.stop();
+
+  return gpsStats;
 };
 
 module.exports = { generateGpsStats };
