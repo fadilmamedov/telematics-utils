@@ -36,7 +36,6 @@ const getCommands = (scenario) => {
       commands.push({
         name: "stay",
         date: moment(currentDate).toDate(),
-        // TODO: rename to durationSec
         duration: duration.asSeconds(),
       });
       currentDate.add(duration);
@@ -46,11 +45,6 @@ const getCommands = (scenario) => {
 
     if (step.move) {
       const duration = parseDuration(step.move.duration);
-
-      if (prevCommand?.name === "move") {
-        prevCommand.duration += duration.asSeconds();
-        return;
-      }
 
       commands.push({
         name: "move",
