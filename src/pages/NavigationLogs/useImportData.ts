@@ -4,6 +4,7 @@ import { Position, Toaster } from "@blueprintjs/core";
 import { navigationLogsState } from "recoil/navigationLogs";
 import { EngineState } from "types/EngineState";
 import { NavigationLog } from "types/NavigationLog";
+import { uploadFile } from "utils/uploadFile";
 
 interface NavigationLogJSON {
   id: number;
@@ -21,28 +22,6 @@ interface NavigationLogJSON {
 const ErrorToaster = Toaster.create({
   position: Position.TOP,
 });
-
-// TODO: Catch problems
-const uploadFile = (accept: string) =>
-  new Promise<string>((resolve) => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = accept;
-
-    input.addEventListener("change", function () {
-      if (!this.files) return;
-
-      const file = this.files[0];
-      const reader = new FileReader();
-      reader.readAsText(file);
-
-      reader.onload = () => {
-        resolve(reader.result as string);
-      };
-    });
-
-    input.click();
-  });
 
 export const useImportData = () => {
   const setNavigationLogs = useSetRecoilState(navigationLogsState);
