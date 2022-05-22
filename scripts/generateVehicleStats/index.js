@@ -23,7 +23,7 @@ const scenario = yaml.load(sourceFileContent);
 const run = async () => {
   const commands = getCommands(scenario);
 
-  let engineStateStats = generateEngineStateStats(commands);
+  let engineStateStats = generateEngineStateStats(commands, scenario.location);
   engineStateStats = engineStateStats.map((s) => ({ type: "engine", ...s }));
 
   let gpsStats = await generateGpsStats(commands, scenario.location, findAddress);

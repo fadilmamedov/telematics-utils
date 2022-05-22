@@ -13,7 +13,19 @@ const getEngineStateOnDate = (engineStates, date) => {
   return engineStatesSortedByDate[engineStatesSortedByDate.length - 1].value;
 };
 
-const generateEngineStateStats = (commands) => {
+const findCommandLocation = (commands, command) => {
+  let index = commands.indexOf(command) - 1;
+
+  while (index >= 0) {
+    const currentCommand = commands[index];
+    if (currentCommand.to) {
+      return currentCommand.to;
+    }
+    index -= 1;
+  }
+};
+
+const generateEngineStateStats = (commands, startLocation) => {
   let result = [];
 
   const engineStateCommands = commands.filter((command) => command.name === "engine");
@@ -21,6 +33,7 @@ const generateEngineStateStats = (commands) => {
     result.push({
       value: command.value,
       date: command.date,
+      location: findCommandLocation(commands, command) ?? startLocation,
     });
   });
 
@@ -34,6 +47,7 @@ const generateEngineStateStats = (commands) => {
         result.push({
           value: "idle",
           date: moment(command.date).add(2, "minutes").toDate(),
+          location: findCommandLocation(commands, command) ?? startLocation,
         });
 
         const nextCommand = commands[index + 1];
@@ -41,6 +55,7 @@ const generateEngineStateStats = (commands) => {
           result.push({
             value: "on",
             date: nextCommand.date,
+            location: findCommandLocation(commands, nextCommand) ?? startLocation,
           });
         }
       }
