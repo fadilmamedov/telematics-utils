@@ -7,9 +7,14 @@ const { getCommands } = require("./getCommands");
 const { generateEngineStateStats } = require("./generateEngineVehicleStats");
 const { generateGpsStats } = require("./generateGpsStats");
 
-const { source: sourceFile, output: outputFile } = commandLineArgs([
+const {
+  source: sourceFile,
+  output: outputFile,
+  address: findAddress,
+} = commandLineArgs([
   { name: "source", alias: "s", type: String },
   { name: "output", alias: "o", type: String },
+  { name: "address", alias: "a", type: Boolean },
 ]);
 
 const sourceFileContent = fs.readFileSync(sourceFile, "utf-8");
@@ -21,7 +26,7 @@ const run = async () => {
   let engineStateStats = generateEngineStateStats(commands);
   engineStateStats = engineStateStats.map((s) => ({ type: "engine", ...s }));
 
-  let gpsStats = await generateGpsStats(commands, scenario.location);
+  let gpsStats = await generateGpsStats(commands, scenario.location, findAddress);
   gpsStats = gpsStats.map((s) => ({ type: "gps", ...s }));
 
   const vehicleStats = sortBy([...engineStateStats, ...gpsStats], ({ date }) => date);

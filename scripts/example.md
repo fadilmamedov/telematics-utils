@@ -1,13 +1,14 @@
 ## Generate vehicle stats
 
 ```
-node generateVehicleStats -s scenario.yaml -o vehicleStats.json
+node generateVehicleStats -s scenario.yaml -o vehicleStats.json -a
 ```
 
 ### Options
 
 - source (`--source` or `-s`) Source file with commands in YAML format
 - output (`--output` or `-o`) Output file with vehicle stats in JSON format
+- address (`--address` or `-a`) Find GPS location addresses
 
 ## Generate navigation logs
 

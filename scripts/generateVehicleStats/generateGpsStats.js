@@ -64,7 +64,7 @@ const getFormattedLocation = async (location) => {
   return formattedLocation;
 };
 
-const generateGpsStats = async (commands, startLocation) => {
+const generateGpsStats = async (commands, startLocation, findAddress) => {
   let gpsStats = [];
 
   let currentLocation = startLocation;
@@ -98,17 +98,19 @@ const generateGpsStats = async (commands, startLocation) => {
 
   gpsStats = sortBy(gpsStats, ({ date }) => date);
 
-  const progressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
-  progressBar.start(gpsStats.length, 0);
+  if (findAddress) {
+    const progressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
+    progressBar.start(gpsStats.length, 0);
 
-  let index = 0;
-  for await (let gpsStatsEntry of gpsStats) {
-    index += 1;
-    gpsStatsEntry.formattedLocation = await getFormattedLocation(gpsStatsEntry.location);
-    progressBar.update(index);
+    let index = 0;
+    for await (let gpsStatsEntry of gpsStats) {
+      index += 1;
+      gpsStatsEntry.formattedLocation = await getFormattedLocation(gpsStatsEntry.location);
+      progressBar.update(index);
+    }
+
+    progressBar.stop();
   }
-
-  progressBar.stop();
 
   return gpsStats;
 };
