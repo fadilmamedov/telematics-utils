@@ -25,7 +25,7 @@ const findCommandLocation = (commands, command) => {
   }
 };
 
-const generateEngineStateStats = (commands, startLocation) => {
+const generateVehicleEngineStateStats = (commands, startLocation) => {
   let result = [];
 
   const engineStateCommands = commands.filter((command) => command.name === "engine");
@@ -65,4 +65,4 @@ const generateEngineStateStats = (commands, startLocation) => {
   return sortBy(result, ({ date }) => date);
 };
 
-module.exports = { generateEngineStateStats };
+module.exports = { generateVehicleEngineStateStats };

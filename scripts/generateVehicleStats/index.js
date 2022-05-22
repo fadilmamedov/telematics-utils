@@ -4,8 +4,8 @@ const yaml = require("js-yaml");
 const commandLineArgs = require("command-line-args");
 
 const { getCommands } = require("./getCommands");
-const { generateEngineStateStats } = require("./generateEngineVehicleStats");
-const { generateGpsStats } = require("./generateGpsStats");
+const { generateVehicleEngineStateStats } = require("./generateVehicleEngineStateStats");
+const { generateVehicleGpsStats } = require("./generateVehicleGpsStats");
 
 const {
   source: sourceFile,
@@ -23,10 +23,10 @@ const scenario = yaml.load(sourceFileContent);
 const run = async () => {
   const commands = getCommands(scenario);
 
-  let engineStateStats = generateEngineStateStats(commands, scenario.location);
+  let engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
   engineStateStats = engineStateStats.map((s) => ({ type: "engine", ...s }));
 
-  let gpsStats = await generateGpsStats(commands, scenario.location, findAddress);
+  let gpsStats = await generateVehicleGpsStats(commands, scenario.location, findAddress);
   gpsStats = gpsStats.map((s) => ({ type: "gps", ...s }));
 
   const vehicleStats = sortBy([...engineStateStats, ...gpsStats], ({ date }) => date);

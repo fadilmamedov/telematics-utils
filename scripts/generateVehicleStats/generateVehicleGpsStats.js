@@ -3,7 +3,7 @@ const moment = require("moment");
 const { sortBy } = require("lodash");
 const cliProgress = require("cli-progress");
 const { getAlongLocation } = require("./getAlongLocation");
-const { generateEngineStateStats } = require("./generateEngineVehicleStats");
+const { generateVehicleEngineStateStats } = require("./generateVehicleEngineStateStats");
 
 const getEndDate = (commands) => {
   const lastCommand = commands[commands.length - 1];
@@ -19,7 +19,7 @@ const getSendDataTimePoints = (commands) => {
   const result = [];
 
   const endDate = getEndDate(commands);
-  const engineStateStats = generateEngineStateStats(commands);
+  const engineStateStats = generateVehicleEngineStateStats(commands);
   engineStateStats.forEach(({ value, date }, index) => {
     const engineStateStartDate = date;
     const engineStateEndDate = engineStateStats[index + 1]?.date ?? endDate;
@@ -64,7 +64,7 @@ const getFormattedLocation = async (location) => {
   return formattedLocation;
 };
 
-const generateGpsStats = async (commands, startLocation, findAddress) => {
+const generateVehicleGpsStats = async (commands, startLocation, findAddress) => {
   let gpsStats = [];
 
   let currentLocation = startLocation;
@@ -115,4 +115,4 @@ const generateGpsStats = async (commands, startLocation, findAddress) => {
   return gpsStats;
 };
 
-module.exports = { generateGpsStats };
+module.exports = { generateVehicleGpsStats };

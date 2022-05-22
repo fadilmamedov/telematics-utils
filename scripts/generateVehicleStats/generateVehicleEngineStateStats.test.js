@@ -1,8 +1,8 @@
 const yaml = require("js-yaml");
 const { getCommands } = require("./getCommands");
-const { generateEngineStateStats } = require("./generateEngineVehicleStats");
+const { generateVehicleEngineStateStats } = require("./generateVehicleEngineStateStats");
 
-describe("generateEngineStateStats", () => {
+describe("generateVehicleEngineStateStats", () => {
   test("repeated engine state in a row", () => {
     const scenario = yaml.load(`
       date: 2022-05-10T09:00:00Z
@@ -15,7 +15,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -40,7 +40,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -62,7 +62,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -83,7 +83,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -104,7 +104,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -125,7 +125,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -145,7 +145,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -165,7 +165,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -189,7 +189,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -212,7 +212,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -232,7 +232,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -252,7 +252,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -274,7 +274,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "on", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -294,7 +294,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "off", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -314,7 +314,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "off", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -334,7 +334,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "off", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -355,7 +355,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "off", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -375,7 +375,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "off", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -396,7 +396,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "off", date: new Date("2022-05-10T09:00:00Z"), location: [10, 10] },
@@ -424,7 +424,7 @@ describe("generateEngineStateStats", () => {
     `);
 
     const commands = getCommands(scenario);
-    const engineStateStats = generateEngineStateStats(commands, scenario.location);
+    const engineStateStats = generateVehicleEngineStateStats(commands, scenario.location);
 
     expect(engineStateStats).toEqual([
       { value: "off", date: expect.anything(), location: [10, 10] },
