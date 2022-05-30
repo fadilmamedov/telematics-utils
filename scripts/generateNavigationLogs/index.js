@@ -5,7 +5,7 @@ const papaparse = require("papaparse");
 
 const {
   source: sourceFile,
-  fetchInterval: fetchIntervalInSeconds,
+  fetchInterval: fetchIntervalInSeconds = 60,
   output: outputFile,
 } = commandLineArgs([
   { name: "source", alias: "s", type: String },
@@ -38,23 +38,29 @@ while (currentDate.toDate() < endDate.toDate()) {
 
   navigationLogs.push({
     id,
-    device_id: "DEVICE_ID",
-    vehicle_id: "f1ed2cf8-9cea-4347-9946-eb2f893d0509",
-    engine_state_date: engine.date,
-    engine_state: engine.value,
-    gps_date: gps.date,
-    gps_lng: gps.location[0],
-    gps_lat: gps.location[1],
-    gps_formatted_location: gps.formattedLocation,
-    request_date: currentDate.utc().format(),
+    deviceID: "DEVICE_ID",
+    vin: engine.vin ?? gps.vin,
+    engineStateDate: engine.date,
+    engineState: engine.value,
+    gpsDate: gps.date,
+    gpsLng: gps.location[0],
+    gpsLat: gps.location[1],
+    gpsFormattedLocation: gps.formattedLocation || "Formatted location",
+    requestDate: currentDate.utc().format(),
   });
 
   id++;
   currentDate.add(fetchIntervalInSeconds, "seconds");
 }
 
-const navigationLogsCSV = papaparse.unparse(navigationLogs);
-fs.writeFileSync(outputFile, navigationLogsCSV, "utf-8");
+if (outputFile.endsWith(".csv")) {
+  const navigationLogsCSV = papaparse.unparse(navigationLogs);
+  fs.writeFileSync(outputFile, navigationLogsCSV, "utf-8");
+} else if (outputFile.endsWith(".json")) {
+  fs.writeFileSync(outputFile, JSON.stringify(navigationLogs, null, 2), "utf-8");
+} else {
+  console.log(navigationLogs);
+}
 
 function findVehicleStatsBeforeDate(vehicleStats, date) {
   let i = 0;

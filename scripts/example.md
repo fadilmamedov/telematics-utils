@@ -13,11 +13,11 @@ node generateVehicleStats -s scenario.yaml -o vehicleStats.json -a
 ## Generate navigation logs
 
 ```
-node generateNavigationLogs -s vehicleStats.json -i 60 -o navigationLogs.json
+node generateNavigationLogs -s vehicleStats.json -o navigationLogs.json -i 60
 ```
 
 ### Options
 
 - source (`--source` or `-s`) Source file with vehicle stats in JSON format
-- fetch interval (`--fetchInterval` or `-i`) Vehicle stats fetch interval
 - outout (`--output` or `-o`) Output file with navigation logs in JSON or CSV format
+- fetch interval (`--fetchInterval` or `-i`) Vehicle stats fetch interval in seconds (optional, defaults to 60 seconds)
