@@ -11,6 +11,7 @@ import { FindLocation } from "./FindLocation";
 
 import { FindLocationCoordinates } from "./FindLocationCoordinates";
 import { Appointments } from "./Appointments";
+import { Warehouses } from "./Warehouses";
 
 export const VehicleStatsMap = () => {
   const { mapboxToken } = useSettings();
@@ -27,6 +28,7 @@ export const VehicleStatsMap = () => {
 
     const mapInstance = new Map({
       container: mapContainer.current,
+      // style: "mapbox://styles/mapbox/satellite-v9",
       style: "mapbox://styles/mapbox/light-v10",
       center: [-79.394823, 43.67553],
       zoom: 11,
@@ -48,6 +50,7 @@ export const VehicleStatsMap = () => {
           <>
             <VehicleGpsStats map={map} />
             <Appointments map={map} />
+            <Warehouses map={map} />
             {findLocationModeEnabled && <FindLocation map={map} />}
           </>
         )}

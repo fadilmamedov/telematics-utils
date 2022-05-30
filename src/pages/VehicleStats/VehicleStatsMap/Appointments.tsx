@@ -68,7 +68,7 @@ export const Appointments: React.FC<AppointmentProps> = ({ map }) => {
       paint: {
         "text-color": "black",
         "text-halo-color": "white",
-        "text-halo-width": 3,
+        "text-halo-width": 1,
       },
       layout: {
         "text-field": "{name}",
