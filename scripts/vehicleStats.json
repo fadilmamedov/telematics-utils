@@ -2,7 +2,12 @@
   {
     "type": "engine",
     "value": "off",
-    "date": "2022-05-10T09:00:00.000Z"
+    "date": "2022-05-10T09:00:00.000Z",
+    "location": [
+      -79.405518,
+      43.651348
+    ],
+    "vin": "T3GXDWBVXUYY17325"
   },
   {
     "type": "gps",
@@ -11,7 +16,8 @@
       -79.405518,
       43.651348
     ],
-    "formattedLocation": "275, Bathurst Street, Alexandra Park, Spadina—Fort York, Old Toronto, Toronto, Golden Horseshoe, Ontario, M6J 2E8, Canada"
+    "formattedLocation": "",
+    "vin": "T3GXDWBVXUYY17325"
   },
   {
     "type": "gps",
@@ -20,12 +26,18 @@
       -79.405518,
       43.651348
     ],
-    "formattedLocation": "275, Bathurst Street, Alexandra Park, Spadina—Fort York, Old Toronto, Toronto, Golden Horseshoe, Ontario, M6J 2E8, Canada"
+    "formattedLocation": "",
+    "vin": "T3GXDWBVXUYY17325"
   },
   {
     "type": "engine",
     "value": "on",
-    "date": "2022-05-10T09:10:00.000Z"
+    "date": "2022-05-10T09:10:00.000Z",
+    "location": [
+      -79.405518,
+      43.651348
+    ],
+    "vin": "T3GXDWBVXUYY17325"
   },
   {
     "type": "gps",
@@ -34,7 +46,8 @@
       -79.405518,
       43.651348
     ],
-    "formattedLocation": "275, Bathurst Street, Alexandra Park, Spadina—Fort York, Old Toronto, Toronto, Golden Horseshoe, Ontario, M6J 2E8, Canada"
+    "formattedLocation": "",
+    "vin": "T3GXDWBVXUYY17325"
   },
   {
     "type": "gps",
@@ -43,6 +56,7 @@
       -79.40462850227343,
       43.651501503448486
     ],
-    "formattedLocation": "Harry Ralph Gairey, Dundas Street West, Alexandra Park, Spadina—Fort York, Old Toronto, Toronto, Golden Horseshoe, Ontario, M5T 2W6, Canada"
+    "formattedLocation": "",
+    "vin": "T3GXDWBVXUYY17325"
   }
 ]

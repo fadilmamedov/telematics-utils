@@ -29,7 +29,12 @@ const run = async () => {
   let gpsStats = await generateVehicleGpsStats(commands, scenario.location, findAddress);
   gpsStats = gpsStats.map((s) => ({ type: "gps", ...s }));
 
-  const vehicleStats = sortBy([...engineStateStats, ...gpsStats], ({ date }) => date);
+  const vehicleStats = sortBy([...engineStateStats, ...gpsStats], ({ date }) => date).map(
+    (vehicleStats) => ({
+      ...vehicleStats,
+      vin: scenario.vin ?? "VIN",
+    })
+  );
 
   if (outputFile) {
     fs.writeFileSync(outputFile, JSON.stringify(vehicleStats, null, 2), "utf-8");

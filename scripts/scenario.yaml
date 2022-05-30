@@ -1,8 +1,6 @@
-# decline move with engine on
-# local timezone
-
 date: 2022-05-10T09:00:00Z
 location: [-79.405518, 43.651348]
+vin: T3GXDWBVXUYY17325
 steps:
   - engine: off
   - stay:
