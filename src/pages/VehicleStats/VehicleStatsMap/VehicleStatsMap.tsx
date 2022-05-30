@@ -1,5 +1,5 @@
 import cls from "classnames";
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import mapboxgl, { Map } from "mapbox-gl";
 import { useSettings } from "hooks/useSettings";
 
@@ -19,7 +19,7 @@ export const VehicleStatsMap = () => {
   const [map, setMap] = useState<Map | null>(null);
   const mapContainer = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!mapboxToken) return;
     if (!mapContainer.current) return;
 
