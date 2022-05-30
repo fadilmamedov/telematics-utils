@@ -38,7 +38,6 @@ export const FetchNavigationLogsDialog: React.FC<FetchNavigationLogsDialogProps>
     stopFetchingData: stopFetchingNavigationLogs,
     isFetching,
     fetchingProgress,
-    setFetchingProgress,
   } = useFetchNavigationLogs();
 
   const handleClose = () => {
