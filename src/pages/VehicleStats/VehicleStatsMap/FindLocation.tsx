@@ -35,25 +35,36 @@ export const FindLocation: React.FC<FindLocationProps> = ({ map }) => {
     const handleClick = async (e: MapMouseEvent & EventData) => {
       const [lng, lat] = e.lngLat.toArray();
 
-      const addressResponse = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&addressdetails=0`
-      );
-      const addressResponseData = await addressResponse.json();
+      if (e.originalEvent.ctrlKey) {
+        const addressResponse = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&addressdetails=0`
+        );
+        const addressResponseData = await addressResponse.json();
 
-      navigator.clipboard.writeText(
-        `Location: ${e.lngLat.lng},${e.lngLat.lat}. Address: ${addressResponseData.display_name}`
-      );
+        navigator.clipboard.writeText(
+          `Location: [${lng},${lat}]. Address: ${addressResponseData.display_name}`
+        );
+
+        MessageToaster.show({
+          message: "Location coordinates and address are copied to clipboard",
+          intent: "primary",
+        });
+
+        return;
+      }
+
+      navigator.clipboard.writeText(`[${lng},${lat}]`);
 
       MessageToaster.show({
-        message: "Location coordinates and address are copied to clipboard",
+        message: "Location coordinates are copied to clipboard",
         intent: "primary",
       });
     };
 
-    map.on("click", handleClick);
+    map.on("mousedown", handleClick);
 
     return () => {
-      map.off("click", handleClick);
+      map.off("mousedown", handleClick);
     };
   }, [map]);
 
