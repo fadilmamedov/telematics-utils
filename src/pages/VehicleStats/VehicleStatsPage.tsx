@@ -1,11 +1,13 @@
 import { Button } from "@blueprintjs/core";
 import { useRecoilState } from "recoil";
 import { findLocationModeEnabledState } from "./state";
+import { useImportAppointments } from "./useImportAppointments";
 import { useImportData } from "./useImportData";
 import { VehicleStatsMap } from "./VehicleStatsMap";
 
 export const VehicleStatsPage = () => {
   const { importJSON } = useImportData();
+  const { importAppointments } = useImportAppointments();
 
   const [findLocationModeEnabled, setFindLocationModeEnabled] = useRecoilState(
     findLocationModeEnabledState
@@ -16,6 +18,10 @@ export const VehicleStatsPage = () => {
       <div className="flex gap-3 items-center">
         <Button outlined intent="primary" onClick={importJSON}>
           Import JSON
+        </Button>
+
+        <Button outlined intent="primary" onClick={importAppointments}>
+          Import appointments
         </Button>
 
         <Button

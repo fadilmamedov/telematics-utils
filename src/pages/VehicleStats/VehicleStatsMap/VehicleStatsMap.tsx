@@ -10,6 +10,7 @@ import { findLocationModeEnabledState } from "../state";
 import { FindLocation } from "./FindLocation";
 
 import { FindLocationCoordinates } from "./FindLocationCoordinates";
+import { Appointments } from "./Appointments";
 
 export const VehicleStatsMap = () => {
   const { mapboxToken } = useSettings();
@@ -46,6 +47,7 @@ export const VehicleStatsMap = () => {
         {map && (
           <>
             <VehicleGpsStats map={map} />
+            <Appointments map={map} />
             {findLocationModeEnabled && <FindLocation map={map} />}
           </>
         )}

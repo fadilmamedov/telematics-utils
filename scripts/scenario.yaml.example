@@ -1,6 +1,9 @@
 date: 2022-05-10T09:00:00Z
 location: [-79.405518, 43.651348]
 vin: T3GXDWBVXUYY17325
+appointments:
+  10-13: [-79.403739, 43.651655]
+  09-21: [-79.480653,43.738568]
 steps:
   - engine: off
   - stay:
