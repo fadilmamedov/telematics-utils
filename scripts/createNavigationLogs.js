@@ -29,7 +29,7 @@ const run = async () => {
       `https://silver.stg4.gobolt.com/telematics/navigation-logs/clear/${scenario.vin}`,
       {
         headers: {
-          Authorization: "Bearer 8fZ3kD8wYLxHQ65gm0ox04H5m1aftqnO0IQbU8bdX8A",
+          Authorization: "Bearer ",
         },
       }
     );
@@ -47,7 +47,7 @@ const run = async () => {
       },
       {
         headers: {
-          Authorization: "Bearer 8fZ3kD8wYLxHQ65gm0ox04H5m1aftqnO0IQbU8bdX8A",
+          Authorization: "Bearer ",
         },
       }
     );
