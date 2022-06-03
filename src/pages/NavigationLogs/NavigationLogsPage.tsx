@@ -28,9 +28,9 @@ export const NavigationLogsPage = () => {
           <Button outlined intent="primary" onClick={importJSON}>
             Import JSON
           </Button>
-          <Button outlined intent="primary" onClick={() => setFetchFromSamsaraDialogVisible(true)}>
+          {/* <Button outlined intent="primary" onClick={() => setFetchFromSamsaraDialogVisible(true)}>
             Fetch from Samsara
-          </Button>
+          </Button> */}
         </ButtonGroup>
 
         <ButtonGroup>
@@ -67,10 +67,10 @@ export const NavigationLogsPage = () => {
 
       <NavigationLogsTable className="h-full mt-3" />
 
-      <FetchNavigationLogsDialog
+      {/* <FetchNavigationLogsDialog
         visibile={isFetchFromSamsaraDialogVisible}
         onClose={() => setFetchFromSamsaraDialogVisible(false)}
-      />
+      /> */}
     </div>
   );
 };

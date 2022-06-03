@@ -9,6 +9,7 @@ import { uploadFile } from "utils/uploadFile";
 interface NavigationLogJSON {
   id: number;
   deviceID: string;
+  vin: string;
   requestDate: string;
   gpsDate: string;
   gpsLng: number;
@@ -52,6 +53,7 @@ export const useImportData = () => {
         ({
           id,
           deviceID,
+          vin,
           requestDate,
           gpsDate,
           gpsLng,
@@ -63,6 +65,7 @@ export const useImportData = () => {
         }) => ({
           id,
           deviceID,
+          vin,
           requestDate: new Date(requestDate),
           gpsDate: new Date(gpsDate),
           gpsLng: gpsLng,

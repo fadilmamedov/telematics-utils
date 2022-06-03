@@ -25,7 +25,6 @@ export const NavigationLogsTable: React.FC<NavigationLogsTableProps> = ({ classN
         <div className="w-[200px] px-2 shrink-0">GPS Date</div>
         <div className="w-[200px] px-2 shrink-0">GPS Location</div>
         <div className="w-[300px] px-2 shrink-0">GPS Formatted Location</div>
-        <div className="w-[100px] px-2 shrink-0">Speed</div>
         <div className="w-[100px] px-2 shrink-0">Engine State</div>
         <div className="w-[200px] px-2 shrink-0">Engine State Date</div>
       </div>

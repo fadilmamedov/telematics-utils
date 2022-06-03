@@ -30,7 +30,6 @@ export const NavigationLogRow: React.FC<NavigationLogRowProps> = ({
     gpsLng,
     gpsLat,
     gpsFormattedLocation,
-    speed,
     engineState,
     engineStateDate,
   } = navigationLog;
@@ -54,7 +53,6 @@ export const NavigationLogRow: React.FC<NavigationLogRowProps> = ({
         </code>
       </div>
       <div className="w-[300px] px-2 shrink-0">{gpsFormattedLocation}</div>
-      <div className="w-[100px] px-2 shrink-0">{speed}</div>
       <div className="flex justify-center w-[100px] px-2 shrink-0">
         <EngineStateTag engineState={engineState} />
       </div>

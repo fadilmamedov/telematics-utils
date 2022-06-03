@@ -47,34 +47,33 @@ export const useFetchNavigationLogs = () => {
 
         const localCurrentDate = moment(currentDate);
 
-        fetchVehiclesStats(samsaraToken, currentDate.utc().format(), deviceID)
-          .then((data) => {
-            navigationLogs.push({
-              id: navigationLogs.length,
-              requestDate: localCurrentDate.toDate(),
-              deviceID: data.id,
-              engineState: data.engineState.value.toLowerCase() as EngineState,
-              engineStateDate: new Date(data.engineState.time),
-              gpsDate: new Date(data.gps.time),
-              gpsLng: data.gps.longitude,
-              gpsLat: data.gps.latitude,
-              gpsFormattedLocation: data.gps.reverseGeo.formattedLocation,
-              speed: data.gps.speedMilesPerHour,
-            });
+        // fetchVehiclesStats(samsaraToken, currentDate.utc().format(), deviceID)
+        //   .then((data) => {
+        //     navigationLogs.push({
+        //       id: navigationLogs.length,
+        //       requestDate: localCurrentDate.toDate(),
+        //       deviceID: data.id,
+        //       engineState: data.engineState.value.toLowerCase() as EngineState,
+        //       engineStateDate: new Date(data.engineState.time),
+        //       gpsDate: new Date(data.gps.time),
+        //       gpsLng: data.gps.longitude,
+        //       gpsLat: data.gps.latitude,
+        //       gpsFormattedLocation: data.gps.reverseGeo.formattedLocation,
+        //     });
 
-            const fetchingProgress = navigationLogs.length / totalNavigationLogsCount;
-            setFetchingProgressThrottle(fetchingProgress);
+        //     const fetchingProgress = navigationLogs.length / totalNavigationLogsCount;
+        //     setFetchingProgressThrottle(fetchingProgress);
 
-            const isFetchingCompleted = navigationLogs.length === totalNavigationLogsCount;
-            if (isFetchingCompleted) {
-              resolve(sortBy(navigationLogs, ({ requestDate }) => requestDate));
-              setIsFetching(false);
-              setFetchingProgress(1);
-            }
-          })
-          .catch((e: Error) => {
-            console.error(e);
-          });
+        //     const isFetchingCompleted = navigationLogs.length === totalNavigationLogsCount;
+        //     if (isFetchingCompleted) {
+        //       resolve(sortBy(navigationLogs, ({ requestDate }) => requestDate));
+        //       setIsFetching(false);
+        //       setFetchingProgress(1);
+        //     }
+        //   })
+        //   .catch((e: Error) => {
+        //     console.error(e);
+        //   });
 
         requestIndex += 1;
         currentDate.add(fetchInterval, "second");
