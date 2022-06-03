@@ -1,12 +1,13 @@
 ## Create navigation logs
 
-Removes current navigation logs for VIN number specified in YAML scenario from Silver Staging 4, then creates navigation logs based on YAML scenario and uploads them to Silver Staging 4
+Creates navigation logs based on testing scenario specified in YAML format and uploads them to Silver Staging 4. All current navigation logs for specified VIN number will be removed from the database
 
 ```
-node createNavigationLogs -s scenario.yaml
+node createNavigationLogs -s scenario.yaml [-o vehicleStats.json] [-a]
 ```
 
 ### Options
 
-- source (`--source` or `-s`) Source file with commands in YAML format
-- address (`--address` or `-a`) Find GPS location addresses (optional, defaults to false)
+- `-s` - source file with testing scenario in YAML format
+- `-o` - output file with vehicle stats in JSON format (optional)
+- `-a` - find GPS location addresses (optional, defaults to false)
