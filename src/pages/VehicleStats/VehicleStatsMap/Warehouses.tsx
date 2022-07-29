@@ -28,7 +28,29 @@ export const Warehouses: React.FC<WarehousesProps> = ({ map }) => {
               ],
             },
             properties: {
-              name: "YYZ Warehouse",
+              name: "YYZ4 Warehouse",
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-79.38600903593071, 43.9102901822786],
+                  [-79.37993532292865, 43.91153142918145],
+                  [-79.37838590634614, 43.9102098128817],
+                  [-79.37929076563016, 43.9095489937265],
+                  [-79.3799105322632, 43.90858454179204],
+                  [-79.38012125291844, 43.907530770886666],
+                  [-79.37968741627519, 43.90613762139421],
+                  [-79.38473231666714, 43.905494618323615],
+                  [-79.38550082729171, 43.90816482171749],
+                ],
+              ],
+            },
+            properties: {
+              name: "YYZ5 Warehouse",
             },
           },
           {
@@ -78,7 +100,17 @@ export const Warehouses: React.FC<WarehousesProps> = ({ map }) => {
               coordinates: [-79.4652028679061, 43.69968406524154],
             },
             properties: {
-              name: "YYZ Warehouse",
+              name: "YYZ4 Warehouse",
+            },
+          },
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [-79.38271401051466, 43.90848581831065],
+            },
+            properties: {
+              name: "YYZ5 Warehouse",
             },
           },
           {
