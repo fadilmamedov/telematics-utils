@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Button, ButtonGroup, Checkbox } from "@blueprintjs/core";
 import { navigationLogsState } from "recoil/navigationLogs";
@@ -7,7 +7,7 @@ import { NavigationLogsTable } from "./NavigationLogsTable";
 import { useExportData } from "./useExportData";
 import { useImportData } from "./useImportData";
 import { roundCoordinatesState } from "./roundCoordinatesState";
-import { FetchNavigationLogsDialog } from "components/navigationLogs/FetchNavigationLogsDialog";
+// import { FetchNavigationLogsDialog } from "components/navigationLogs/FetchNavigationLogsDialog";
 
 export const NavigationLogsPage = () => {
   const navigationLogs = useRecoilValue(navigationLogsState);
@@ -16,7 +16,7 @@ export const NavigationLogsPage = () => {
   const { importCSV, importJSON } = useImportData();
   const { exportCSV, exportJSON } = useExportData();
 
-  const [isFetchFromSamsaraDialogVisible, setFetchFromSamsaraDialogVisible] = useState(false);
+  // const [isFetchFromSamsaraDialogVisible, setFetchFromSamsaraDialogVisible] = useState(false);
 
   return (
     <div className="flex flex-col h-full">
